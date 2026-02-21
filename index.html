@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChanDy Text Stamp Generator - 簡単操作でスタイリッシュなテキストスタンプを作成・保存できるWebツールです。">
+    <meta property="og:title" content="ChanDy Text Stamp Generator">
+    <meta property="og:description" content="自由自在な変形と完璧な中央揃え。理想のテキストスタンプを数秒で作成。">
+    <meta property="og:type" content="website">
+    <title>ChanDy Text Stamp Generator</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&family=Arvo:ital,wght@1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>ChanDy Text Stamp Generator</h1>
+        </header>
+
+        <main>
+            <div class="preview-area">
+                <canvas id="stampCanvas" width="500" height="500"></canvas>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label for="textInput">テキスト</label>
+                    <input type="text" id="textInput" value="義務">
+                </div>
+
+                <div class="control-group">
+                    <label for="fontSelect">フォント</label>
+                    <select id="fontSelect">
+                        <option value="'Noto Sans JP', sans-serif">Noto Sans JP</option>
+                        <option value="'Roboto', sans-serif">Roboto</option>
+                        <option value="sans-serif">Sans Serif</option>
+                        <option value="serif">Serif</option>
+                        <option value="cursive">Cursive</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="fontFile">カスタムフォント (ファイルを選択)</label>
+                    <input type="file" id="fontFile" accept=".ttf,.otf,.woff,.woff2">
+                </div>
+
+                <div class="control-group">
+                    <label for="textColor">文字色</label>
+                    <div class="color-wrapper">
+                        <input type="color" id="textColor" value="#fed020">
+                        <input type="text" id="textColorHex" value="#fed020" maxlength="7">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="strokeColor">縁取り色</label>
+                    <div class="color-wrapper">
+                        <input type="color" id="strokeColor" value="#000000">
+                        <input type="text" id="strokeColorHex" value="#000000" maxlength="7">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="strokeWidth">縁取りの太さ</label>
+                    <div class="slider-group">
+                        <input type="range" id="strokeWidth" min="0" max="100" value="0">
+                        <span id="strokeWidthVal">0px</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>変形 (縦横比)</label>
+                    <div class="slider-group">
+                        <label for="scaleX">横幅 (Width): <span id="scaleXVal">1.0</span></label>
+                        <input type="range" id="scaleX" min="0.1" max="5.0" step="0.1" value="1.0">
+                    </div>
+                    <div class="slider-group">
+                        <label for="scaleY">縦幅 (Height): <span id="scaleYVal">1.0</span></label>
+                        <input type="range" id="scaleY" min="0.1" max="5.0" step="0.1" value="1.0">
+                    </div>
+                    <div class="slider-group">
+                        <label for="letterSpacing">文字間隔 (Spacing): <span id="letterSpacingVal">0px</span></label>
+                        <input type="range" id="letterSpacing" min="-20" max="100" step="1" value="0">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="fontSize">文字サイズ: <span id="fontSizeVal">100px</span></label>
+                    <input type="range" id="fontSize" min="10" max="1000" step="1" value="100">
+                </div>
+
+                <button id="downloadBtn" class="btn-primary">保存 (PNG)</button>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
