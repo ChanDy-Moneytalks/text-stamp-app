@@ -230,6 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.readAsArrayBuffer(file);
     });
 
-    // Initial Draw
-    draw();
+    // Initial Draw when fonts are ready
+    document.fonts.ready.then(() => {
+        draw();
+    });
 });
