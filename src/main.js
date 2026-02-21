@@ -230,8 +230,20 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.readAsArrayBuffer(file);
     });
 
-    // Initial Draw when fonts are ready
-    document.fonts.ready.then(() => {
-        draw();
-    });
+    // Initialize Label Values
+    strokeWidthVal.textContent = `${strokeWidth.value}px`;
+    scaleXVal.textContent = parseFloat(scaleXInput.value).toFixed(1);
+    scaleYVal.textContent = parseFloat(scaleYInput.value).toFixed(1);
+    letterSpacingVal.textContent = `${letterSpacingInput.value}px`;
+    fontSizeVal.textContent = `${fontSizeInput.value}px`;
+
+    // Initial Draw
+    draw();
+
+    // Redraw when fonts are ready to ensure custom fonts are applied
+    if (document.fonts) {
+        document.fonts.ready.then(() => {
+            draw();
+        });
+    }
 });
